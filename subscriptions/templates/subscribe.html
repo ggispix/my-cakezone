@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
+        <h4 class="text-primary text-uppercase mb-4">Newsletter</h4>
+        <p>Amet justo diam dolor rebum lorem sit stet sea justo kasd</p>
+        <form action="{% url 'subscribtions:subscribe'%}" method = 'post'>
+            {% csrf_token %}
+                <div class="input-group">
+                    {{ subscribe_users.email }}
+                    <button class="btn btn-primary">Sign Up</button>
+                </div>
+        </form>
+    </div>
+</body>
+</html>

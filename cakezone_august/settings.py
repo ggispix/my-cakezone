@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     "masters.apps.MastersConfig",
     "services.apps.ServicesConfig",
     "contacts.apps.ContactsConfig",
-    "home.apps.HomeConfig"
+    "home.apps.HomeConfig",
+    "subscriptions.apps.SubscriptionsConfig"
 ]
 
 MIDDLEWARE = [
@@ -68,6 +69,10 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'contacts.context_processors.contacts',
+                'masters.context_processors.staff',
+                'menu.context_processors.category',
+                'services.context_processors.service',
             ],
         },
     },

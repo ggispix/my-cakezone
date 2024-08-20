@@ -11,10 +11,10 @@ class Staff(models.Model):
     facebook = models.URLField(blank=True)
     twitter = models.URLField(blank=True)
     instagram = models.URLField(blank=True)
+    class Meta:
+        verbose_name_plural = 'Staff'
+        ordering = ['sort']
 
     def __str__(self):
         return self.name
 
-    class Meta:
-        verbose_name_plural = 'Staff'
-        ordering = ['sort']
