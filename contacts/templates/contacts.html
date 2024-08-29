@@ -2,59 +2,69 @@
 
 {% block content %}
     <!-- Contact Start -->
-        <div class="container-fluid contact position-relative px-5" style="margin-top: 90px;">
+    <div class="container-fluid contact position-relative px-5" style="margin-top: 90px;">
         <div class="container">
             <div class="row g-5 mb-5">
-                {% for contact in contacts %}
-                    <div class="col-lg-4 col-md-6">
-                        <div class="bg-primary border-inner text-center text-white p-5">
-                            <i class="bi bi-geo-alt fs-1 text-white"></i>
-                            <h6 class="text-uppercase my-2">Our Office</h6>
-                            <span>{{ contact.street_address}}</span>
-                        </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="bg-primary border-inner text-center text-white p-5">
+                        <i class="bi bi-geo-alt fs-1 text-white"></i>
+                        <h6 class="text-uppercase my-2">Our Office</h6>
+                        <span>{{ contacts.address }}</span>
                     </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="bg-primary border-inner text-center text-white p-5">
-                            <i class="bi bi-envelope-open fs-1 text-white"></i>
-                            <h6 class="text-uppercase my-2">Email Us</h6>
-                            <span>{{ contact.email}}</span>
-                        </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="bg-primary border-inner text-center text-white p-5">
+                        <i class="bi bi-envelope-open fs-1 text-white"></i>
+                        <h6 class="text-uppercase my-2">Email Us</h6>
+                        <span>{{ contacts.email }}</span>
                     </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="bg-primary border-inner text-center text-white p-5">
-                            <i class="bi bi-phone-vibrate fs-1 text-white"></i>
-                            <h6 class="text-uppercase my-2">Call Us</h6>
-                            <span>{{ contact.phone_numbers}}</span>
-                        </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="bg-primary border-inner text-center text-white p-5">
+                        <i class="bi bi-phone-vibrate fs-1 text-white"></i>
+                        <h6 class="text-uppercase my-2">Call Us</h6>
+                        <span>{{ contacts.phone }}</span>
                     </div>
-                {% endfor %}
+                </div>
             </div>
-            <div class="row justify-content-center">
+            {% if user.is_authenticated %}
+                <div class="row justify-content-center">
                 <div class="col-lg-6">
-                    <form  action="{% url 'contacts:index'%}" method = 'post'>
-                        {% csrf_token %}
-                            <div class="row g-3">
-                                <div class="col-sm-6">
-                                    {{ message_form.name }}
-                                </div>
-                                <div class="col-sm-6">
-                                    {{ message_form.email }}
-                                </div>
-                                <div class="col-sm-12">
-                                    {{ message_form.subject }}
-                                </div>
-                                <div class="col-sm-12">
-                                    {{ message_form.message }}
-                                </div>
-                                <div class="col-sm-12">
-                                    <button class="btn btn-primary border-inner w-100 py-3" type="submit">Send Message</button>
+                <form action="{% url 'contacts:index' %}" method="post">
+                    {% csrf_token %}
+                    <div class="row g-3">
+                            <div class="col-sm-6">
+                                {{ message_form.name }}
+                                <div class="invalid-feedback">
+                                    {{ message_form.name.errors }}
                                 </div>
                             </div>
-                        <div class="col-sm-12">
-                            <button class="btn btn-primary border-inner w-100 py-3" type="submit">Send Message</button>
+                            <div class="col-sm-12">
+                                {{ message_form.email }}
+                                <div class="invalid-feedback">
+                                    {{ message_form.email.errors }}
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                {{ message_form.subject }}
+                                <div class="invalid-feedback">
+                                    {{ message_form.subject.errors }}
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                {{ message_form.message }}
+                                <div class="invalid-feedback">
+                                    {{ message_form.message.errors }}
+                                </div>
+                            </div>
                         </div>
-                    </form>
+                    <div class="col-sm-12">
+                        <button class="btn btn-primary border-inner w-100 py-3" type="submit">Send Message</button>
+                    </div>
+                </form>
+                </div>
             </div>
+            {% endif %}
         </div>
     </div>
     <!-- Contact End -->

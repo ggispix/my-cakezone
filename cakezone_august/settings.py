@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     "services.apps.ServicesConfig",
     "contacts.apps.ContactsConfig",
     "home.apps.HomeConfig",
-    "subscriptions.apps.SubscriptionsConfig"
+    "subscriptions.apps.SubscriptionsConfig",
+    "account.apps.AccountConfig"
 ]
 
 MIDDLEWARE = [
@@ -70,9 +71,6 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'contacts.context_processors.contacts',
-                'masters.context_processors.staff',
-                'menu.context_processors.category',
-                'services.context_processors.service',
             ],
         },
     },
@@ -90,6 +88,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 
 # Password validation
