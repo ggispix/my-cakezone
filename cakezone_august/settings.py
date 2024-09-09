@@ -99,7 +99,7 @@ if DEBUG:
 else:
     DATABASES['default'] = {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': DB_NAME,
+        'NAME': DB_DATABASE,
         'USER': DB_USER,
         'PASSWORD': DB_PASSWORD,
         'HOST': DB_HOST,
